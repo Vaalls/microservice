@@ -22,4 +22,31 @@ router.get('/privada', (req, res) =>{
     res.send('Área acessada com sucesso').status(200)
 })
 
+//Perfis de exemplo
+const tokenExemplo = {
+    'tokenAdmin' : {role: 'admin'},
+    'tokenUser' : {role: 'user'},
+    'tokenConvidado' : {role: 'convidado'}
+}
+
+//403 Sem permissões 
+router.get('/admin', (req, res) => {
+    const token = req.headers["authorization"];
+
+    if(!token){
+        return res.status(401).send('Sem Autorização')
+    }
+
+    const user = tokenExemplo[token]
+    if(!user){
+        return res.status(401).send('Token inválido')
+    }
+
+    if(user.role != 'admin'){
+        return res.status(403).send('Você não tem permissão para acessar aqui')
+    }
+
+    return res.send('Acesso liberado!').status(200)
+})
+
 module.exports = router;
