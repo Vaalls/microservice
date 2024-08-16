@@ -61,4 +61,28 @@ router.post('/submit', (req, res) => {
     res.status(201).send('Dado criado com sucesso');
 })
 
+
+//simulando base de dados
+let items = [
+    {id: 1, nome: 'Gabriel'},
+    {id: 2, nome: "Kaio"},
+    {id: 3, nome: "Gustavo"}
+]
+
+//404 Not Found
+router.get('/items/:id', (req, res) =>{
+    const id = parseInt(req.params.id)
+
+    const item = items.find((item) => item.id == id)
+
+    if(item){
+        return res.status(200).send(`Esse é seu item: ${item.nome}`);
+    } else{
+        return res.status(404).send('Item não encontrado!')
+    }
+})
+
+//Status 429 rate limiting -- Multa por tentar acesso
+
+
 module.exports = router;
