@@ -49,4 +49,16 @@ router.get('/admin', (req, res) => {
     return res.send('Acesso liberado!').status(200)
 })
 
+//400 Bad Request
+router.post('/submit', (req, res) => {
+    const {nome, email} = req.body;
+
+    if(!nome || !email){
+        return res.status(400).send('Bad Request... \nFavor enviar nome e email')
+    }
+
+    //Status 201 created
+    res.status(201).send('Dado criado com sucesso');
+})
+
 module.exports = router;
