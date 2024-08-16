@@ -11,5 +11,5 @@ console.log(`Api Inicialidade na porta ${port}`)
 function onListening(){
     const addr = server.address();
     bind = typeof addr == 'string' ? 'pipe' + addr : 'port' + addr.port;
-    console.log('Listening on' + bind)
+    console.log('Listening on ' + bind)
 }

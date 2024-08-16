@@ -11,4 +11,15 @@ router.get('/', (req, res, next)=>{
     )
 })
 
+//401 Unauthorized
+router.get('/privada', (req, res) =>{
+    const token = req.headers['authorization'];
+
+    if(!token || token !== 'minhaSenha'){
+        return res.status(401).send('Sem Autorização')
+    }
+
+    res.send('Área acessada com sucesso').status(200)
+})
+
 module.exports = router;
