@@ -4,5 +4,6 @@ const controller = require('../controllers/produto-controller')
 
 //Fazer roteamento de produtos
 route.get('/', controller.get)
+route.post('/', controller.post)
 
 module.exports = route

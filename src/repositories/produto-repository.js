@@ -8,3 +8,7 @@ exports.get = async() => {
     return result
 }
  
+exports.create = async(data) => {
+    const produto = Produto(data)
+    await produto.save()
+}

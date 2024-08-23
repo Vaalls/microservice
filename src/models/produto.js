@@ -8,7 +8,7 @@ const scheme = new Schema({
         trim: true 
     },
     
-    price:{
+    preco:{
         type: Number,
         required: true
     }
