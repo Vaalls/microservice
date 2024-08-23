@@ -10,3 +10,10 @@ exports.post = async(req, res)=>{
     await repository.create(req.body)
     res.status(201).send({mensagem: "Criado com sucesso"})
 }
+
+exports.put = async(req, res)=> {
+    const id = req.params.id
+
+    await repository.update(id, req.body)
+    res.status(204).send({mensagem: "Atualizado com sucesso"})
+}
